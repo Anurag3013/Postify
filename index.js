@@ -38,13 +38,18 @@ let posts = [
 
 ];
 
-// app.get("/" , (req , res) =>{
-//     res.send("you contacted root path");
-// });
+app.get("/" , (req , res) =>{
+    res.render("root.ejs");
+
+});
 
 // app.get("/posts" , (req , res) =>{
 //     res.send("you contacted index route");
 // });
+
+app.get("/posts/root" , (req , res) =>{
+    res.redirect("/posts");
+});
 
 app.get("/posts" , (req , res) =>{
     res.render("index.ejs" , {posts});
