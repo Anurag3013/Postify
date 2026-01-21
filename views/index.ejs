@@ -1,31 +1,49 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Home Page</title>
-        <link rel="stylesheet" href="style.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postify - Home</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="/posts" class="brand">Postify</a>
+            <a href="/posts/new" class="btn btn-primary">Create Post</a>
+        </div>
+    </header>
 
-    </head>
-    <body>
-        <h1>Quora post</h1>
+    <main class="container">
+        <h1 class="mb-4">Recent Posts</h1>
+        
+        <% if (posts.length === 0) { %>
+            <div class="card text-center">
+                <p>No posts yet. Be the first to share something!</p>
+                <a href="/posts/new" class="btn btn-primary mt-4">Create your first post</a>
+            </div>
+        <% } %>
 
-        <% for(post of posts){ %>
-            <div><h3 class="post">@<%= post.username %></h3>
-                <h4 class="user"><%= post.content %></h4>
-                <br>
-                <a href="/posts/<%=post.id %>">See in Detail</a>
-                <a href="/posts/<%=post.id %>/edit">Edit</a>
+        <div class="posts-grid">
+        <% for(let post of posts){ %>
+            <div class="card">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="username">@<%= post.username %></h3>
+                    <span class="text-muted">#<%= post.id.slice(0, 8) %></span>
+                </div>
+                <p class="post-content"><%= post.content %></p>
                 
-                <form method = "post" action="/posts/<%=post.id %>?_method=DELETE">
-                    <button>Delete</button>
-                </form>
-                <hr>
+                <div class="action-bar">
+                    <a href="/posts/<%=post.id %>" class="btn btn-secondary">View</a>
+                    <a href="/posts/<%=post.id %>/edit" class="btn btn-secondary">Edit</a>
+                    
+                    <form method="post" action="/posts/<%=post.id %>?_method=DELETE" style="display:inline;">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
             </div>    
         <%} %>
-
-        <a href="/posts/new">New post</a>
-
-
-
-
-    </body>
+        </div>
+    </main>
+</body>
 </html>

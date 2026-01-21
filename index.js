@@ -38,9 +38,9 @@ let posts = [
 
 ];
 
-app.get("/" , (req , res) =>{
-    res.send("you contacted root path");
-});
+// app.get("/" , (req , res) =>{
+//     res.send("you contacted root path");
+// });
 
 // app.get("/posts" , (req , res) =>{
 //     res.send("you contacted index route");

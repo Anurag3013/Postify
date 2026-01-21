@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Post</title>
-        <link rel="stylesheet" href="style.css">
-
-
-    </head>
-    <body>
-        <h1> Post in Detail</h1>
-
-        <p> Post id : <%= post.id %></p>
-
-        <div>
-            <h3 class="user">@ <%= post.username %></h3>
-            <h4><%= post.content %></h4>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postify - View Post</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="/posts" class="brand">Postify</a>
+            <a href="/posts" class="btn btn-secondary">Back to Home</a>
         </div>
+    </header>
 
-
-
-
-
-
-    </body>
+    <main class="container">
+        <div class="card">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="username" style="font-size: 1.5rem;">@<%= post.username %></h3>
+                <span class="text-muted">ID: <%= post.id %></span>
+            </div>
+            
+            <div class="post-content" style="font-size: 1.2rem; margin: 2rem 0;">
+                <%= post.content %>
+            </div>
+            
+            <div class="action-bar">
+                <a href="/posts/<%=post.id %>/edit" class="btn btn-secondary">Edit Post</a>
+                <form method="post" action="/posts/<%=post.id %>?_method=DELETE" style="display:inline;">
+                    <button class="btn btn-danger">Delete Post</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
 </html>
