@@ -3,6 +3,8 @@
 Postify is a simple and beginner‑friendly **RESTful CRUD web application** built using **Node.js**, **Express**, and **EJS**. It allows users to create, view, edit, and delete posts while demonstrating core REST principles and server‑side rendering.
 
 ---
+## <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/3ecf02a9-484b-4f72-b5e6-cab7a510a02e" />
+
 
 ## ✨ Features
 
